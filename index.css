@@ -160,7 +160,7 @@ body > main {
 }
 .media{
 	background-color: #e8676b;
-	padding: 10px 0;
+	padding: 20px 0;
 	text-align: center;
 }
 .media a {
@@ -168,7 +168,7 @@ body > main {
 	border-radius: 50%;
 	width: 40px;
 	margin: 0 15px;
-	padding: 20px 0;
+	padding: 10px 0;
 }
 .media a:hover{
 	background: rgb(208, 92, 96);
