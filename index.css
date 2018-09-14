@@ -207,11 +207,13 @@ body > main {
 	font-family: cursive;
 }
 
-.skills {
+section.skills,
+section.portfolio{
 	max-width: 930px;
-	margin: 0 auto;
+	margin: 0 auto 70px;
 }
-.skills>h2{
+section.skills>h2,
+section.portfolio>h2{
 	margin-bottom: 25px;
 	text-align: center;
 	color: #3d4451;
@@ -248,3 +250,61 @@ body > main {
 	background-color: #e8676b;
 	border-radius: 4px;
 }
+section.portfolio{
+	text-align: center;
+}
+section.portfolio>nav{
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	margin-bottom: 28px;
+}
+section.portfolio>nav>ol{
+	display: inline-block;
+	vertical-align: top;
+}
+section.portfolio>nav>ol>li{
+	float: left;
+	margin-left: 44px;
+	color: #000;
+    font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+}
+section.portfolio>nav>ol>li:first-child{
+	margin-left: 0;
+}
+section.portfolio>nav>.bar{
+	margin-top: 10px;
+	height: 5px;
+	background: #ffffff;
+	border-radius: 3px;
+}
+section.portfolio>nav>.bar>.bar-inner{
+	height: 100%;
+	border-radius: 3px;
+	background: rgb(232, 103, 107);
+	transition: all 0.4s;
+}
+/* 定义3个状态 */
+section.portfolio>nav>.bar.state1>.bar-inner{
+	width: 42px;
+	margin-left: 0;
+}
+section.portfolio>nav>.bar.state2>.bar-inner{
+	width: 54px;
+    margin-left: 57px;
+}
+section.portfolio>nav>.bar.state3>.bar-inner{
+	width: 90px;
+    margin-left: 127px;
+}
+
+section.portfolio .works{
+	height: 576px;
+	position: relative;
+}
+section.portfolio .works .big,
+section.portfolio .works .small{
+	position: absolute;
+} 
