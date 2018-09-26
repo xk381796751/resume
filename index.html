@@ -14,27 +14,32 @@
 			fill: currentColor;
 			overflow: hidden;
 		}
-		.site-welcome{
+
+		.site-welcome {
 			display: none;
 			width: 100%;
 			height: 100%;
 			position: fixed;
 			top: 0;
-			left: 0;			
+			left: 0;
 			background: gray;
 			z-index: 1;
 		}
-		.site-welcome.active{
+
+		.site-welcome.active {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 		}
-		.loading{
+
+		.loading {
 			width: 200px;
 			height: 200px;
 			position: relative;
 		}
-		.loading::before, .loading::after{
+
+		.loading::before,
+		.loading::after {
 			content: '';
 			width: 0;
 			height: 0;
@@ -48,16 +53,18 @@
 			background: black;
 			animation: sss 1.5s linear infinite;
 		}
-		.loading::after{
+
+		.loading::after {
 			animation-delay: 0.75s;
 		}
-		@keyframes sss{
-			0%{
+
+		@keyframes sss {
+			0% {
 				width: 0;
 				height: 0;
 				opacity: 1
 			}
-			100%{
+			100% {
 				width: 100px;
 				height: 100px;
 				opacity: 0;
@@ -77,12 +84,26 @@
 			<a class="logo" href="#" alt="logo" style="float: left;">
 				<span class="rs">RS</span><span class="card">card</span>
 			</a>
-			<nav style="float: right;">
+			<nav class="menu" style="float: right;">
 				<ul class="clearfix">
-					<li><a href="#">关于</a></li>
-					<li><a href="#">技能</a></li>
-					<li><a href="#">作品</a></li>
-					<li><a href="#">博客</a></li>
+					<li><a href="#siteAbout">关于</a></li>
+					<li><a href="#siteSkills">技能</a></li>
+					<li>
+						<a href="#siteWorks">作品</a>
+						<ul class="submenu">
+							<li>作品1</li>
+							<li>作品2</li>
+							<li>作品3</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">博客</a>
+						<ul class="submenu">
+							<li>博客1</li>
+							<li>博客2</li>
+							<li>博客3</li>
+						</ul>
+					</li>
 					<li><a href="#">日历</a></li>
 					<li><a href="#">联系方式</a></li>
 					<li><a href="#">其他</a></li>
@@ -94,7 +115,7 @@
 		<div class="mask"></div>
 	</div>
 	<main>
-		<div class="userCard">
+		<div class="userCard" id="siteAbout">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img style="width: 296px; height: 343px;" src="./img/avatar.jpg" alt="头像">
@@ -155,7 +176,7 @@
 			<br> 技能：前端开发，前端开发，前端开发。
 		</p>
 	</main>
-	<section class="skills">
+	<section class="skills" id="siteSkills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -196,7 +217,7 @@
 			</li>
 		</ol>
 	</section>
-	<section class="portfolio">
+	<section class="portfolio" id="siteWorks">
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -209,13 +230,13 @@
 			</div>
 		</nav>
 		<script>
-			portfolio1.onclick = function() {
+			portfolio1.onclick = function () {
 				portfolioBar.className = 'bar state1';
 			}
-			portfolio2.onclick = function() {
+			portfolio2.onclick = function () {
 				portfolioBar.className = 'bar state2';
 			}
-			portfolio3.onclick = function() {
+			portfolio3.onclick = function () {
 				portfolioBar.className = 'bar state3';
 			}
 		</script>
@@ -232,15 +253,37 @@
 		</div>
 	</section>
 	<script>
-		setTimeout(function() {
+		setTimeout(function () {
 			siteWelcome.classList.remove("active")
 		}, 1000)
 
-		window.onscroll = function() {
-			if(window.scrollY > 0) {
+		window.onscroll = function () {
+			if (window.scrollY > 0) {
 				topNavBar.classList.add('sticky')
 			} else {
 				topNavBar.classList.remove('sticky')
+			}
+		}
+
+		var liTags = document.querySelectorAll('nav.menu > ul > li')
+		for (let index = 0; index < liTags.length; index++) {
+			liTags[index].onmouseenter = function (e) {
+				e.currentTarget.classList.add('active')
+			}
+			liTags[index].onmouseleave = function (e) {
+				e.currentTarget.classList.remove('active')
+			}
+		}
+
+		var aTags = document.querySelectorAll('nav.menu > ul > li > a')
+		for (let index = 0; index < aTags.length; index++) {
+			aTags[index].onclick = function(e) {
+				e.preventDefault();
+				let a = e.currentTarget
+				let href = a.getAttribute('href')
+				let element = document.querySelector(href)
+				let top = element.offsetTop
+				window.scrollTo(0, top-80)
 			}
 		}
 	</script>
