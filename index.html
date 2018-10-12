@@ -115,7 +115,7 @@
 		<div class="mask"></div>
 	</div>
 	<main>
-		<div class="userCard" id="siteAbout">
+		<div data-x class="userCard" id="siteAbout">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img style="width: 296px; height: 343px;" src="./img/avatar.jpg" alt="头像">
@@ -176,7 +176,7 @@
 			<br> 技能：前端开发，前端开发，前端开发。
 		</p>
 	</main>
-	<section class="skills" id="siteSkills">
+	<section data-x class="skills" id="siteSkills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -217,7 +217,7 @@
 			</li>
 		</ol>
 	</section>
-	<section class="portfolio" id="siteWorks">
+	<section data-x class="portfolio" id="siteWorks">
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -252,18 +252,53 @@
 			</div>
 		</div>
 	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
 	<script>
 		setTimeout(function () {
 			siteWelcome.classList.remove("active")
-		}, 1000)
+		}, 500)
 
+
+		// 添加 offset 类
+		let specialTags = document.querySelectorAll('[data-x]')
+		for (let i = 0; i < specialTags.length; i++) {
+			specialTags[i].classList.add('offset')
+		}
+		setInterval(function() {
+			findClosest()
+		},500)
+		
 		window.onscroll = function () {
 			if (window.scrollY > 0) {
 				topNavBar.classList.add('sticky')
 			} else {
 				topNavBar.classList.remove('sticky')
 			}
+			findClosest()
 		}
+
+
+		function findClosest() {
+			let specialTags = document.querySelectorAll('[data-x]')
+			let minIndex = 0
+			for (let i = 1; i < specialTags.length; i++) {
+				if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+					minIndex = i
+				}
+			}
+			// minIndex 就是里窗口顶部最近的元素
+			specialTags[minIndex].classList.remove('offset')
+			let id = specialTags[minIndex].id
+			let a = document.querySelector('a[href="#' + id + '"]')
+			let li = a.parentNode
+			let brothersAndMe = li.parentNode.children
+			for (let i = 0; i < brothersAndMe.length; i++) {
+				brothersAndMe[i].classList.remove('highlight')
+			}
+			li.classList.add('highlight')
+		}
+
+
 
 		var liTags = document.querySelectorAll('nav.menu > ul > li')
 		for (let index = 0; index < liTags.length; index++) {
@@ -276,14 +311,33 @@
 		}
 
 		var aTags = document.querySelectorAll('nav.menu > ul > li > a')
+		function animate(time) {
+			requestAnimationFrame(animate);
+			TWEEN.update(time);
+		}
+		requestAnimationFrame(animate);
+
 		for (let index = 0; index < aTags.length; index++) {
-			aTags[index].onclick = function(e) {
+			aTags[index].onclick = function (e) {
 				e.preventDefault(); // 阻止a标签的默认动作，即跳转锚点
 				let a = e.currentTarget
 				let href = a.getAttribute('href')
 				let element = document.querySelector(href)
 				let top = element.offsetTop
-				window.scrollTo(0, top-80)
+				let currentTop = window.scrollY
+				let targetTop = top - 80
+				let s = targetTop - currentTop // 路程
+				var coords = { y: currentTop }; // 起始位置
+				var t = Math.abs((s / 100) * 300) // 时间
+				if (t > 500) { t = 500 }
+				var tween = new TWEEN.Tween(coords) // 起始位置
+					.to({ y: targetTop }, t) // 结束位置 和 时间
+					.easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
+					.onUpdate(function () {
+						// coords.y 已经变了
+						window.scrollTo(0, coords.y) // 如何更新界面
+					})
+					.start(); // 开始缓动
 			}
 		}
 	</script>

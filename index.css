@@ -1,12 +1,19 @@
-*{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
 }
-h1,h2,h3,h4,h5,h6{
-	font-weight: normal;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
 }
+
 body {
     background: #efefef;
 }
@@ -22,22 +29,33 @@ a {
     clear: both;
 }
 
+[data-x].offset {
+    transform: translateY(160px);
+}
+
+[data-x] {
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+
 .topNavBar {
     padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
-	width: 100%;
-	color: #b7b7b7;
-	transition: all 0.5s;
-	z-index: 1;
+    width: 100%;
+    color: #b7b7b7;
+    transition: all 0.5s;
+    z-index: 1;
 }
+
 .topNavBar.sticky {
-	background: white;
-	padding: 10px 0;
-	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-	color: #3d4451;
+    background: white;
+    padding: 10px 0;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.75);
+    color: #3d4451;
 }
+
 .topNavBar-inner {
     padding: 0 16px;
 }
@@ -46,16 +64,15 @@ a {
     padding-top: 7px;
 }
 
-
 .topNavBar nav>ul>li {
     float: left;
     margin-left: 17px;
-	margin-right: 17px;
-	position: relative;
+    margin-right: 17px;
+    position: relative;
 }
 
 .topNavBar nav>ul>li>a {
-	position: relative;
+    position: relative;
     font-size: 12px;
     font-weight: bold;
     border-top: 3px solid transparent;
@@ -65,49 +82,55 @@ a {
     display: block;
 }
 
-.topNavBar nav>ul>li.active>a::after{
-	display: block;
-	content: '';
-	width: 100%;
-	height: 3px;
-	background: #e06567;
-	position: absolute;
-	left: 0;
-	top: 100%;
-	animation: menuSlide .5s
+.topNavBar nav>ul>li.active>a::after,
+.topNavBar nav>ul>li.highlight>a::after {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: #e06567;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    animation: menuSlide .5s
 }
-@keyframes menuSlide{
-	0%{
-		width: 0;
-	}
-	100%{
-		width: 100%;
-	}
+
+@keyframes menuSlide {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
 }
-.topNavBar nav>ul>li>.submenu{
-	display: none;
-	position: absolute;
-	right: 0;
-	top: 100%;
-	color: #3d4451;
-	background: white;
-	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+
+.topNavBar nav>ul>li>.submenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    color: #3d4451;
+    background: white;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.75);
 }
-.topNavBar nav>ul>li.active>.submenu{
-	display: block;
-	animation: submenuSlide .5s;
+
+.topNavBar nav>ul>li.active>.submenu {
+    display: block;
+    animation: submenuSlide .5s;
 }
-.topNavBar nav>ul>li>.submenu>li{
-	white-space: nowrap;
-	padding: 10px;
+
+.topNavBar nav>ul>li>.submenu>li {
+    white-space: nowrap;
+    padding: 10px;
 }
-@keyframes submenuSlide{
-	0%{
-		margin-right: 100%;
-	}
-	100%{
-		margin-right: 0;
-	}
+
+@keyframes submenuSlide {
+    0% {
+        margin-right: 100%;
+    }
+    100% {
+        margin-right: 0;
+    }
 }
 
 .topNavBar .logo {
@@ -136,225 +159,264 @@ a {
     height: 100%;
     background: rgba(0, 0, 0, .8);
 }
-body > main {
-	margin-top: -340px;
+
+body>main {
+    margin-top: -340px;
 }
 
 .userCard {
     max-width: 930px;
     margin: 0 auto;
-	background: #ffffff;
-	box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.3);
+    background: #ffffff;
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 .userCard .pictureAndText {
     padding: 50px;
 }
 
-
 .userCard .pictureAndText .picture,
 .userCard .pictureAndText .text {
-	float: left;
+    float: left;
 }
-.userCard .pictureAndText .text{
-	width: 470px;
-	margin-left: 50px;
+
+.userCard .pictureAndText .text {
+    width: 470px;
+    margin-left: 50px;
 }
 
 .userCard .pictureAndText .text p {
-   margin: 10px 0 20px 0;
+    margin: 10px 0 20px 0;
 }
 
-.userCard .pictureAndText .text hr{
-	height: 0;
-	border: 0;
-	border-top: 1px solid rgb(193, 193, 193);
-	margin-bottom: 20px;
+.userCard .pictureAndText .text hr {
+    height: 0;
+    border: 0;
+    border-top: 1px solid rgb(193, 193, 193);
+    margin-bottom: 20px;
 }
 
 .userCard .pictureAndText .text .welcome {
-	position: relative;
-	padding: 5px 12px;
-	font-size: 14px;
-	color: white;
-	font-weight: bold;
+    position: relative;
+    padding: 5px 12px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
     background: rgb(232, 103, 107);
 }
+
 .userCard .pictureAndText .text h1 {
-	margin-top: 30px;
+    margin-top: 30px;
 }
+
 .userCard .pictureAndText .text .welcome .triangle {
-	display: block;
-	position: absolute;
-	top: 100%;
-	left: 5px;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 5px;
     width: 0;
     border: 10px solid transparent;
     border-top-width: 0;
     border-left-color: rgb(232, 103, 107);
 }
+
 .userCard .pictureAndText .text dt,
 .userCard .pictureAndText .text dd {
-	float: left;
-	padding: 8px 0;
-}
-.userCard .pictureAndText .text dt {
-	width: 30%;
-	font-size: 12px;
-	font-weight: bold;
-}
-.userCard .pictureAndText .text dd {
-	width: 70%;
-	font-size: 15px;
-	color: #9da0a7;
-}
-.media{
-	background-color: #e8676b;
-	padding: 20px 0;
-	text-align: center;
-}
-.media a {
-	display: inline-block;
-	border-radius: 50%;
-	width: 40px;
-	margin: 0 15px;
-	padding: 10px 0;
-}
-.media a:hover{
-	background: rgb(208, 92, 96);
-}
-.media svg{
-	width: 20px;
-	height: 20px;
-	fill: white;
-	vertical-align: top;
-}
-.downResume-wrapper{
-	text-align: center;
-}
-.downResume-wrapper .downloadResume{
-	display: inline-block;
-	padding: 16px 60px;
-	margin: 36px;
-	border: 1px solid #cbcdcf;
-	border-radius: 3px;
-	color: #3d4451;
-	font-size: 15px;
-	font-weight: 700;
-	transition: box-shadow .4s;
-}
-.downResume-wrapper .downloadResume:hover{
-	box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.3);
+    float: left;
+    padding: 8px 0;
 }
 
-.selfIntroduction{
-	max-width: 930px;
-	margin: 0 auto 80px;
-	text-align: center;
-	font-size: 20px;
-	color: #000;
-	line-height:1.8;
-	font-family: cursive;
+.userCard .pictureAndText .text dt {
+    width: 30%;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.userCard .pictureAndText .text dd {
+    width: 70%;
+    font-size: 15px;
+    color: #9da0a7;
+}
+
+.media {
+    background-color: #e8676b;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.media a {
+    display: inline-block;
+    border-radius: 50%;
+    width: 40px;
+    margin: 0 15px;
+    padding: 10px 0;
+}
+
+.media a:hover {
+    background: rgb(208, 92, 96);
+}
+
+.media svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    vertical-align: top;
+}
+
+.downResume-wrapper {
+    text-align: center;
+}
+
+.downResume-wrapper .downloadResume {
+    display: inline-block;
+    padding: 16px 60px;
+    margin: 36px;
+    border: 1px solid #cbcdcf;
+    border-radius: 3px;
+    color: #3d4451;
+    font-size: 15px;
+    font-weight: 700;
+    transition: box-shadow .4s;
+}
+
+.downResume-wrapper .downloadResume:hover {
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.3);
+}
+
+.selfIntroduction {
+    max-width: 930px;
+    margin: 0 auto 80px;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    line-height: 1.8;
+    font-family: cursive;
 }
 
 section.skills,
-section.portfolio{
-	max-width: 930px;
-	margin: 0 auto 70px;
+section.portfolio {
+    max-width: 930px;
+    margin: 0 auto 70px;
 }
+
 section.skills>h2,
-section.portfolio>h2{
-	margin-bottom: 25px;
-	text-align: center;
-	color: #3d4451;
+section.portfolio>h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #3d4451;
     font-size: 34px;
     line-height: 1.2;
     font-weight: 600;
 }
+
 .skills>ol {
-	padding: 40px 50px 0;
-	background: rgb(255, 255, 255);
-	box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.3);
+    padding: 40px 50px 0;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
-.skills>ol>li{
-	float: left;
-	width: 48%;
+
+.skills>ol>li {
+    float: left;
+    width: 48%;
 }
-.skills>ol>li:nth-child(even){
-	float: right;
+
+.skills>ol>li:nth-child(even) {
+    float: right;
 }
-.skills>ol>li>h3{
-	color: #3d4451;
-	font-size: 14px;
+
+.skills>ol>li>h3 {
+    color: #3d4451;
+    font-size: 14px;
     line-height: 1.1;
     padding-right: 40px;
 }
-.skills>ol>li .progressBar{
-	height: 5px;
-	background: rgb(250, 225, 225);
-	border-radius: 4px;
+
+.skills>ol>li .progressBar {
+    height: 5px;
+    background: rgb(250, 225, 225);
+    border-radius: 4px;
 	margin: 4px 0 40px;
+	overflow: hidden;
 }
-.skills>ol>li .progressBar .progress{
-	height: 100%;
-	background-color: #e8676b;
+
+.skills>ol>li .progressBar .progress {
+    height: 100%;
+    background-color: #e8676b;
 	border-radius: 4px;
+	transform: translateX(0);
+	transition: all 1s; 
 }
-section.portfolio{
-	text-align: center;
+
+.skills.offset>ol>li .progressBar .progress {
+	transform: translateX(-100%);
 }
-section.portfolio>nav{
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	margin-bottom: 28px;
+
+section.portfolio {
+    text-align: center;
 }
-section.portfolio>nav>ol{
-	display: inline-block;
-	vertical-align: top;
+
+section.portfolio>nav {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-bottom: 28px;
 }
-section.portfolio>nav>ol>li{
-	float: left;
-	margin-left: 44px;
-	color: #000;
+
+section.portfolio>nav>ol {
+    display: inline-block;
+    vertical-align: top;
+}
+
+section.portfolio>nav>ol>li {
+    float: left;
+    margin-left: 44px;
+    color: #000;
     font-size: 13px;
-	font-weight: 600;
-	cursor: pointer;
+    font-weight: 600;
+    cursor: pointer;
 }
-section.portfolio>nav>ol>li:first-child{
-	margin-left: 0;
+
+section.portfolio>nav>ol>li:first-child {
+    margin-left: 0;
 }
-section.portfolio>nav>.bar{
-	margin-top: 10px;
-	height: 5px;
-	background: #ffffff;
-	border-radius: 3px;
+
+section.portfolio>nav>.bar {
+    margin-top: 10px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 3px;
 }
-section.portfolio>nav>.bar>.bar-inner{
-	height: 100%;
-	border-radius: 3px;
-	background: rgb(232, 103, 107);
-	transition: all 0.4s;
+
+section.portfolio>nav>.bar>.bar-inner {
+    height: 100%;
+    border-radius: 3px;
+    background: rgb(232, 103, 107);
+    transition: all 0.4s;
 }
+
 /* 定义3个状态 */
-section.portfolio>nav>.bar.state1>.bar-inner{
-	width: 42px;
-	margin-left: 0;
+
+section.portfolio>nav>.bar.state1>.bar-inner {
+    width: 42px;
+    margin-left: 0;
 }
-section.portfolio>nav>.bar.state2>.bar-inner{
-	width: 54px;
+
+section.portfolio>nav>.bar.state2>.bar-inner {
+    width: 54px;
     margin-left: 57px;
 }
-section.portfolio>nav>.bar.state3>.bar-inner{
-	width: 90px;
+
+section.portfolio>nav>.bar.state3>.bar-inner {
+    width: 90px;
     margin-left: 127px;
 }
 
-section.portfolio .works{
-	height: 576px;
-	position: relative;
+section.portfolio .works {
+    height: 576px;
+    position: relative;
 }
+
 section.portfolio .works .big,
-section.portfolio .works .small{
-	position: absolute;
-} 
+section.portfolio .works .small {
+    position: absolute;
+}
