@@ -278,7 +278,7 @@
 		var aTags = document.querySelectorAll('nav.menu > ul > li > a')
 		for (let index = 0; index < aTags.length; index++) {
 			aTags[index].onclick = function(e) {
-				e.preventDefault();
+				e.preventDefault(); // 阻止a标签的默认动作，即跳转锚点
 				let a = e.currentTarget
 				let href = a.getAttribute('href')
 				let element = document.querySelector(href)
