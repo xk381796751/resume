@@ -310,29 +310,29 @@ section.portfolio>h2 {
     font-weight: 600;
 }
 
-.skills>ol {
+section.skills>ol {
     padding: 40px 50px 0;
     background: rgb(255, 255, 255);
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
-.skills>ol>li {
+section.skills>ol>li {
     float: left;
     width: 48%;
 }
 
-.skills>ol>li:nth-child(even) {
+section.skills>ol>li:nth-child(even) {
     float: right;
 }
 
-.skills>ol>li>h3 {
+section.skills>ol>li>h3 {
     color: #3d4451;
     font-size: 14px;
     line-height: 1.1;
     padding-right: 40px;
 }
 
-.skills>ol>li .progressBar {
+section.skills>ol>li .progressBar {
     height: 5px;
     background: rgb(250, 225, 225);
     border-radius: 4px;
@@ -340,7 +340,7 @@ section.portfolio>h2 {
 	overflow: hidden;
 }
 
-.skills>ol>li .progressBar .progress {
+section.skills>ol>li .progressBar .progress {
     height: 100%;
     background-color: #e8676b;
 	border-radius: 4px;
@@ -348,81 +348,12 @@ section.portfolio>h2 {
 	transition: all 1s; 
 }
 
-.skills.offset>ol>li .progressBar .progress {
+section.skills.offset>ol>li .progressBar .progress {
 	transform: translateX(-100%);
 }
 
-section.portfolio {
-    text-align: center;
-}
 
-section.portfolio>nav {
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
-    margin-bottom: 28px;
-}
-
-section.portfolio>nav>ol {
-    display: inline-block;
-    vertical-align: top;
-}
-
-section.portfolio>nav>ol>li {
-    float: left;
-    margin-left: 44px;
-    color: #000;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-section.portfolio>nav>ol>li:first-child {
-    margin-left: 0;
-}
-
-section.portfolio>nav>.bar {
-    margin-top: 10px;
-    height: 5px;
-    background: #ffffff;
-    border-radius: 3px;
-}
-
-section.portfolio>nav>.bar>.bar-inner {
-    height: 100%;
-    border-radius: 3px;
-    background: rgb(232, 103, 107);
-    transition: all 0.4s;
-}
-
-/* 定义3个状态 */
-
-section.portfolio>nav>.bar.state1>.bar-inner {
-    width: 42px;
-    margin-left: 0;
-}
-
-section.portfolio>nav>.bar.state2>.bar-inner {
-    width: 54px;
-    margin-left: 57px;
-}
-
-section.portfolio>nav>.bar.state3>.bar-inner {
-    width: 90px;
-    margin-left: 127px;
-}
-
-section.portfolio .works {
-    height: 576px;
-    position: relative;
-}
-
-section.portfolio .works .big,
-section.portfolio .works .small {
-    position: absolute;
-}
-
-
+/* 作品集轮播相关样式 */
 section.portfolio .swiper-container {
 	width: 800px;
 	height: 400px;
