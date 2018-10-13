@@ -1,10 +1,14 @@
 !function() {
-	window.addEventListener('scroll', function () {
-		if (window.scrollY > 0) {
-			topNavBar.classList.add('sticky')
-		} else {
-			topNavBar.classList.remove('sticky')
-		}
-	})
+	var view = document.querySelector('#topNavBar')
+	var controller = function(view) {
+		window.addEventListener('scroll', function () {
+			if (window.scrollY > 0) {
+				view.classList.add('sticky')
+			} else {
+				view.classList.remove('sticky')
+			}
+		})
+	}
+	controller(view)
 }.call()
 
