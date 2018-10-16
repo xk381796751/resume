@@ -1,44 +1,17 @@
 !function () {
-	var view = document.querySelector('section.message')
-	var model = {
-		init: function () {
-			var APP_ID = 'mvs3vaHD9Sbn2shwaI1QyXWT-gzGzoHsz'
-			var APP_KEY = 'UzR0qYsCdcKmIbAmdJNp3vOC'
-			AV.init({ appId: APP_ID, appKey: APP_KEY })
-		},
-		// 获取数据
-		fetch: function () {
-			var query = new AV.Query('Message');
-			return query.find() // Promise对象
-		},	
+	var model = Model({ resourceName: 'Message' })
 
-		// 创建数据
-		save: function (name, content) {
-			var Message = AV.Object.extend('Message');
-			var message = new Message();
-			return message.save({ // Promise对象
-				name: name,
-				content: content
-			})
-		}
-	}
+	var view = View('section.message')
 
-
-	var controller = {
-		view: null,
-		model: null,
+	var controller = Controller({
 		messageList: null,
 		form: null,
-		init: function (view, model) {
-			this.view = view,
-			this.model = model
-			this.messageList = view.querySelector('#messageList'),
-			this.form = view.querySelector('#postMessageForm'),
-			this.model.init(),
-			this.loadMessages(),
-			this.bindEvents()
+		init: function (view, controller) {
+			this.messageList = view.querySelector('#messageList')
+			this.form = view.querySelector('form')
+			this.loadMessages()
+			// object 上有这三个属性吗
 		},
-		
 		loadMessages: function () {
 			this.model.fetch().then((messages) => {
 				let arr = messages.map((item) => item.attributes)
@@ -61,9 +34,9 @@
 			let content = myForm.querySelector('input[name="content"]').value
 			if (!name || !content) {
 				document.querySelector('section p').classList.add('notice')
-			} else { 
+			} else {
 				document.querySelector('section p').classList.remove('notice')
-				this.model.save(name, content).then(function (object) {
+				this.model.save({'name': name, 'content': content}).then(function (object) {
 					let li = document.createElement('li')
 					li.innerText = `${object.attributes.name}: ${object.attributes.content}`
 					this.messageList.appendChild(li)
@@ -72,11 +45,10 @@
 					console.log(object);
 				})
 			}
-			
-		}
-	}
-	controller.init(view, model) 
 
+		}
+	})
+	controller.init(view, model)
 }.call()
 
 
