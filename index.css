@@ -376,9 +376,32 @@ section.portfolio .swiper-button-next {
 }
 
 
+/* 留言板相关 */
+section.message form {
+	max-width: 700px;
+	margin: 50px auto 0; 
+}
+section.message form input {
+	vertical-align: middle;
+	padding: 3px;
+}
+section.message form input[type=submit] {
+	padding: 2px 14px;
+	cursor: pointer;
+}
+section.message p {
+	display: none;
+	max-width: 700px;
+	margin: 4px auto 0;
+	color: red;
+	font-size: 18px;
+}
+section.message p.notice {
+	display: block;
+}
 section.message ol {
     max-width: 750px;
-	margin: 0 auto;
+	margin: 26px auto 0;
 	border-top: 1px solid #DDD;
 }
 section.message ol li {
